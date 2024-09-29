@@ -1,0 +1,28 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/*Nav styling*/
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    height: 64px;
+    padding: 8px;
+}
+
+/* Left-side of nav*/
+.left-side{
+    display: flex;
+    /* align-items: center; */
+}
+
+.main-menu .menu{
+    padding: 10px;
+}
+
+.search-bar{
+    display: flex;
+}
