@@ -145,6 +145,12 @@ nav {
     /* outline: 1px solid red; */
 }
 
+.middle-section .icons:hover{
+    cursor: pointer;
+    background-color: rgba(95, 99, 104, 0.1);
+    border-radius: 50%;
+}
+
 /*right side of nav*/
 
 .right-side{
@@ -174,6 +180,8 @@ nav {
 
 .side-bar{
     display: flex;
+    max-width: 280px;
+    flex: 1;
     flex-direction: column;
     padding-top: 15px;
     /* outline: 1px solid red; */
@@ -213,6 +221,51 @@ nav {
     gap: 30px;
 }
 
+/*Styles for main-section*/
+
+.main-section{
+    display: flex;
+}
+
+.main-section, .side-bar{
+    outline: 5px solid red;
+}
+
+
+/*Styles for the note section*/
+
+.note-section{
+    outline: 1px solid black;
+    max-width: calc(100% - 280px);
+    flex: 1;
+    
+}
+
+.take-a-note{
+    margin: 32px auto;
+    display: flex;
+    max-width: 598px;
+    /* flex: 1; */
+    
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,  0, 0 , 0.4);
+}
+
+
+
+.take-a-note input{
+    max-width: 598px;
+    flex: 1;
+    height: 46px;
+    padding: 12px 16px;
+    font-size: 15px;
+    color: rgb(32, 33, 36);;
+    border: none;
+    font-weight: 400;
+    border-radius: 8px;
+}
+
 
 
 
@@ -242,6 +295,27 @@ nav {
     .list-view{
         display: none;
     }
+
+    .icon span{
+        display: none;
+    }
+
+    .side-bar{
+        max-width: 80px;
+    }
+
+    .note-section{
+        max-width: calc(100% - 80px);
+    }
+
+    .take-a-note{
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+@media screen and (max-width){
+    
 }
 
 
