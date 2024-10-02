@@ -4,37 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <!-- Our Styles -->
     <link rel="stylesheet" href="./assets/css/styles.css">
     <title>Google Keep</title>
 </head>
 <body>
     <nav> <!--Start of the nav bar-->
         <div class="left-side"> <!--Left side of the nav bar-->
-            <div class="main-menu">
-                <span class="material-symbols-outlined menu">menu</span>
+            <div class="main-menu tooltipmain">
+                <span class="material-symbols-outlined menu tooltipmain2">menu</span>
+                <span class="tooltip">Main menu</span>
                 <img class="note" src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png" srcset="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png 1x, https://www.gstatic.com/images/branding/product/2x/keep_2020q4_48dp.png 2x " alt="" aria-hidden="true" role="presentation" style="width:40px;height:40px">
                 <span class="keep">Keep</span>
             </div>
         </div>
         <div class="middle-section"> <!--Search bar section-->
+            <form action="">
                 <div class="search-button">
-                    <button><span class="material-symbols-outlined">search</span></button>
+                    <button><span class="material-symbols-outlined ">search</span></button>
+                    <span class="tooltip">Search</span>
                 </div>
                 <div class="search-input">
                     <input type="text" placeholder="Search">
                 </div>
-                <div class="search icons">
-                    <button><span class="material-symbols-outlined">search</span></button>
-                </div>
-                <div class="refresh icons">
-                    <span class="material-symbols-outlined">refresh</span>
-                </div>
-                <div class="list-view icons">
-                    <span class="material-symbols-outlined">view_agenda</span>
-                </div>
-                <div class="setting icons">
-                    <span class="material-symbols-outlined">settings</span>
-                </div>
+            </form>
+            <div class="search icons">
+                <button><span class="material-symbols-outlined">search</span></button>
+            </div>
+            <div class="refresh icons tooltipmain">
+                <span class="material-symbols-outlined tooltipmain2">refresh</span>
+                <span class="tooltip">Refresh</span>
+            </div>
+            <div class="list-view icons  tooltipmain">
+                <span class="material-symbols-outlined tooltipmain2">view_agenda</span>
+                <span class="tooltip">List view</span>
+            </div>
+            <div class="setting icons tooltipmain">
+                <span class="material-symbols-outlined tooltipmain2">settings</span>
+                <span class="tooltip">Settings</span>
             </div>
         </div>
         <div class="right-side"><!--Right side of the nav bar-->
@@ -48,34 +55,57 @@
     </nav>
     <div class="main-section"> <!--Main section starts here-->
         <div class="side-bar"> <!--side bar starts here-->
-            <div class="notes icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6A4.997 4.997 0 0 1 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"></path></svg>
-                <span>Notes</span>
+            <div class="notes icon ">
+                <span class="material-symbols-outlined active">lightbulb</span>
+                <span class="text">Notes</span>
             </div>
             <div class="reminder icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M18 17v-6c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v6H4v2h16v-2h-2zm-2 0H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6zm-4 5c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2z"></path></svg>
-                <span>Reminders</span>
+                <span class="material-symbols-outlined menu">notifications</span>
+                <span class="text">Reminders</span>
             </div>
             <div class="edit icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.41 4.94l-1.35-1.35c-.78-.78-2.05-.78-2.83 0L13.4 6.41 3 16.82V21h4.18l10.46-10.46 2.77-2.77c.79-.78.79-2.05 0-2.83zm-14 14.12L5 19v-1.36l9.82-9.82 1.41 1.41-9.82 9.83z"></path></svg>
-                <span>Edit labels</span>
+                <span class="material-symbols-outlined menu">edit</span>
+                <span class="text">Edit labels</span>
             </div>
             <div class="archive icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.54 5.23l-1.39-1.68C18.88 3.21 18.47 3 18 3H6c-.47 0-.88.21-1.16.55L3.46 5.23C3.17 5.57 3 6.02 3 6.5V19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6.5c0-.48-.17-.93-.46-1.27zM6.24 5h11.52l.83 1H5.42l.82-1zM5 19V8h14v11H5zm11-5.5l-4 4-4-4 1.41-1.41L11 13.67V10h2v3.67l1.59-1.59L16 13.5z"></path></svg>
-                <span>Archive</span>
+                <span class="material-symbols-outlined menu">archive</span>
+                <span class="text">Archive</span>
             </div>
             <div class="delete icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15 4V3H9v1H4v2h1v13c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6h1V4h-5zm2 15H7V6h10v13z"></path><path d="M9 8h2v9H9zm4 0h2v9h-2z"></path></svg>
-                <span>Bin</span>
+                <span class="material-symbols-outlined menu">delete</span>
+                <span class="text">Bin</span>
             </div>
         </div>
         <div class="note-section"> <!--Start of the note-section-->
-            <div class="take-a-note">
+            <form class="take-a-note inactive-form"><!--InActive form-->
                 <input type="text" placeholder="Take a note...">
-                <div class="material-symbols-outlineds"><span class="material-symbols-outlined">check_box</span></div>
-                <div class="material-symbols-outlineds"><span class="material-symbols-outlined">brush</span></div>
-                <div class="material-symbols-outlineds images"><span class="material-symbols-outlined image">image </span>   </div>   
-            </div>
+                <div class="material-symbols-outlineds take"><span class="material-symbols-outlined">check_box</span></div>
+                <div class="material-symbols-outlineds take"><span class="material-symbols-outlined">brush</span></div>
+                <div class="material-symbols-outlineds images take"><span class="material-symbols-outlined image">image </span>   </div>   
+            </form>
+            <form class="take-a-note active-form"> <!--Active form-->
+                <div class="title-div tooltipmain">
+                    <input class="title" type="text" placeholder="Title">
+                    <span class="material-symbols-outlined tooltipmain2">keep</span>
+                    <span class="tooltip">Pin note</span>
+                </div>
+                <input class="note" type="text" placeholder="Take a note...">
+                <div class="bottom-section"> <!-- Bottom section of the note taking form-->
+                    <div class="bottom-icons"> <!---Bottom icons-->
+                        <div class=" act"><span class="material-symbols-outlined">add_alert</span></div>
+                        <div class="act"><span class="material-symbols-outlined">person_add</span></div>
+                        <div class=" act"><span class="material-symbols-outlined image">palette</span></div>
+                        <div class="act"><span class="material-symbols-outlined image">image</span></div>
+                        <div class="act"><span class="material-symbols-outlined image">archive</span></div>
+                        <div class="act"><span class="material-symbols-outlined image">more_vert</span></div>
+                        <div class="act"><span class="material-symbols-outlined image">undo</span></div>
+                        <div class="act"><span class="material-symbols-outlined image">redo</span></div>
+                    </div>
+                    <div class="close-btn"> <!--close button-->
+                        <button>Close</button>
+                    </div>
+                </div>
+            </form>
             <div class="notes-that-you-added-appear-hear"><!--Notes that you added appear here section-->
                 <div class="note-light">
                     <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6A4.997 4.997 0 0 1 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"></path></svg>
@@ -85,6 +115,11 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
+    
+    <!-- Script tag -->
+    <script src="./assets/js/script.js"> 
+
+    </script>
 </body>
 </html> 
