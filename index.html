@@ -143,6 +143,67 @@
 
             <div class="notes-canvas"> <!--Example note-->
                 <div class="note-container">
+                    <span class="material-symbols-outlined tick">check_circle</span>
+                    <span class="note-titles">Title</span>
+                    <span class="note-texts">Text</span>
+                    <div class="note-footer">
+                        <div class=" act tooltipmain">
+                            <span class="material-symbols-outlined tooltipmain2">add_alert</span>
+                            <span class="tooltip-active-form ">Remind me</span>
+                        </div>
+                        <div class="act tooltipmain">
+                            <span class="material-symbols-outlined tooltipmain2">person_add</span>
+                            <span class="tooltip-active-form ">Collaborator</span>
+                        </div>
+                        <div class=" act tooltipmain">
+                            <span class="material-symbols-outlined image tooltipmain2">palette</span>
+                            <span class="tooltip-active-form">Background options</span>
+                        </div>
+                        <div class="act tooltipmain">
+                            <span class="material-symbols-outlined image tooltipmain2">image</span>
+                            <span class="tooltip-active-form">Add image</span>
+                        </div>
+                        <div class="act tooltipmain">
+                            <span class="material-symbols-outlined image tooltipmain2">archive</span>
+                            <span class="tooltip-active-form">Archive</span>
+                        </div>
+                        <div class="act tooltipmain">
+                            <span class="material-symbols-outlined image tooltipmain2">more_vert</span>
+                            <span class="tooltip-active-form">More</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="note-container">
+                    <span class="note-titles">Title</span>
+                    <span class="note-texts">Text</span>
+                    <div class="note-footer">
+                        <div class=" act tooltipmain">
+                            <span class="material-symbols-outlined tooltipmain2">add_alert</span>
+                            <span class="tooltip-active-form ">Remind me</span>
+                        </div>
+                        <div class="act tooltipmain">
+                            <span class="material-symbols-outlined tooltipmain2">person_add</span>
+                            <span class="tooltip-active-form ">Collaborator</span>
+                        </div>
+                        <div class=" act tooltipmain">
+                            <span class="material-symbols-outlined image tooltipmain2">palette</span>
+                            <span class="tooltip-active-form">Background options</span>
+                        </div>
+                        <div class="act tooltipmain">
+                            <span class="material-symbols-outlined image tooltipmain2">image</span>
+                            <span class="tooltip-active-form">Add image</span>
+                        </div>
+                        <div class="act tooltipmain">
+                            <span class="material-symbols-outlined image tooltipmain2">archive</span>
+                            <span class="tooltip-active-form">Archive</span>
+                        </div>
+                        <div class="act tooltipmain">
+                            <span class="material-symbols-outlined image tooltipmain2">more_vert</span>
+                            <span class="tooltip-active-form">More</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="note-container">
                     <span class="note-titles">Title</span>
                     <span class="note-texts">Text</span>
                     <div class="note-footer">
@@ -173,7 +234,6 @@
                     </div>
                 </div>
             </div>
-            <div class="notes"></div>
             <div class="notes-that-you-added-appear-hear"><!--Notes that you added appear here section-->
                 <div class="note-light">
                     <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6A4.997 4.997 0 0 1 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"></path></svg>
@@ -182,9 +242,64 @@
                     <span>Notes that you add appear here</span>
                 </div>
             </div>
+
+            <!--modal starts here-->
+            <div class="modal">
+                <div class="modal-content">
+                    <form class="take-a-note active-form form-modal"> <!--Active form-->
+                        <div class="title-div tooltipmain title-grow"> <!--Title input text-->
+                            <input class="title" type="text" placeholder="Title">
+                            <span class="material-symbols-outlined  tooltipmain2">keep</span>
+                            <span class="tooltip-pin-note">Pin note</span>
+                        </div>
+                        <input class="note" type="text" placeholder="Take a note..."> <!--Note input text-->
+                        <div class="edited-section"><!--Edited  time-->
+                            <span>Edited 19:35</span>
+                        </div>
+                        <div class="bottom-section"> <!-- Bottom section of the note taking form-->
+                            <div class="bottom-icons"> <!---Bottom icons-->
+                                <div class=" act tooltipmain">
+                                    <span class="material-symbols-outlined tooltipmain2">add_alert</span>
+                                    <span class="tooltip-active-form ">Remind me</span>
+                                </div>
+                                <div class="act tooltipmain">
+                                    <span class="material-symbols-outlined tooltipmain2">person_add</span>
+                                    <span class="tooltip-active-form ">Collaborator</span>
+                                </div>
+                                <div class=" act tooltipmain">
+                                    <span class="material-symbols-outlined image tooltipmain2">palette</span>
+                                    <span class="tooltip-active-form">Background options</span>
+                                </div>
+                                <div class="act tooltipmain">
+                                    <span class="material-symbols-outlined image tooltipmain2">image</span>
+                                    <span class="tooltip-active-form">Add image</span>
+                                </div>
+                                <div class="act tooltipmain">
+                                    <span class="material-symbols-outlined image tooltipmain2">archive</span>
+                                    <span class="tooltip-active-form">Archive</span>
+                                </div>
+                                <div class="act tooltipmain">
+                                    <span class="material-symbols-outlined image tooltipmain2">more_vert</span>
+                                    <span class="tooltip-active-form">More</span>
+                                </div>
+                                <div class="act tooltipmain">
+                                    <span class="material-symbols-outlined image tooltipmain2">undo</span>
+                                    <span class="tooltip-active-form">Undo</span>
+                                </div>
+                                <div class="act tooltipmain">
+                                    <span class="material-symbols-outlined image tooltipmain2">redo</span>
+                                    <span class="tooltip-active-form">Redo</span>
+                                </div>
+                            </div>
+                            <div class="close-btn"> <!--close button-->
+                                <button>Close</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-    
     <!-- Script tag -->
     <script src="./assets/js/script.js"> 
 

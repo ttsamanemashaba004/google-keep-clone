@@ -18,11 +18,11 @@ nav {
     height: 64px;
     padding: 8px;
     border-bottom: 1px solid #dadce0;
-    /* position: fixed;
+    /* position: fixed; */
     background-color: white;
-    z-index: 10000;
+    /* z-index: 10000; */
     flex: 1;
-    width: 100%; */
+    /* width: 100%; */
     
 }
 
@@ -38,6 +38,7 @@ nav {
     justify-content: center;
     align-items: center;
     position: relative;
+    
 }
 .main-menu .note{
     margin-right: 10px;
@@ -198,7 +199,7 @@ form {
     flex-direction: column;
     padding-top: 10px;
     /* position: fixed;
-    top: 60px; */
+    top: 64px; */
     
 }
 
@@ -256,6 +257,8 @@ form {
 
 .main-section{
     display: flex;
+    /* position: relative;
+    top: 64px; */
 }
 
 
@@ -290,7 +293,7 @@ form {
     flex-direction: column;
     flex: 1;
     height: 134px;
-    /* display: none; */
+    display: none;
 }
 
 .title-div{
@@ -628,10 +631,12 @@ form {
 .notes-canvas{
     display: flex;
     padding-left: 70px;
+    flex-wrap: wrap;
 }
 
 .note-container{
-    max-width: 238px;
+    max-width: 240px;
+    min-width: 240px;
     display: flex;
     flex-direction: column;
     min-height: 102px;
@@ -639,6 +644,8 @@ form {
     border-radius: 8px;
     background: white;
     flex: 1;
+    margin-right: 8px;
+    position: relative;
 
 }
 
@@ -646,18 +653,103 @@ form {
     display: flex;
     max-width: 238px;
     height: 34px;
+    /* margin-top: 50px; */
 }
 
-.note-footer .tooltipmain2{
-    
+.note-footer .tooltipmain, .note-footer .tooltipmain2{
+    margin: 0;
     padding: 0;
 }
 
+.note-footer .tooltipmain{
+    margin: 0 3px;
+}
 
-.note-container span{
+.note-container .note-titles{
     padding: 12px 16px 0px 16px;
     /* outline: 1px solid red; */
 }
+
+.note-container .note-texts{
+    padding: 12px 16px;
+}
+
+.note-titles{
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: .00625rem;
+    line-height: 1.5rem;
+    
+}
+
+.note-texts{
+    font-size: 1.125rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+    letter-spacing: 0;
+}
+
+.note-container .tick{
+    position: absolute;
+    left: -10px;
+    top: -12px;
+}
+
+
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+}
+
+.modal-content {
+    position: relative;
+    transform: translate(8px, 190px);
+    display: flex;
+    
+}
+
+
+
+.modal-content .form-modal{
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content .form-modal .title::placeholder{
+    font-size: 1.375rem;    
+}
+
+
+
+.modal-content .form-modal .edited-section{
+    width: 100%;
+    height: 32px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.modal-content .form-modal .edited-section span{
+    font-size: 12px;
+    margin-right: 5px;
+}
+
+.title-grow{
+    flex: 1;
+}
+
+.open-modal{
+    visibility: visible;
+}
+
+
 
 /*Navi bar media queries*/
 @media screen and (max-width: 795px){
@@ -702,8 +794,21 @@ form {
         margin-top: 20px;
     }
 
+    .take-a-note{
+        margin-bottom: 0;
+    }
+
+    .note-container .note-texts{
+        font-size: 14px;
+    }
+
     .note-container{
         max-width: none;
+        
+    }
+
+    .notes-canvas{
+        padding: 0;
     }
 
     nav{
