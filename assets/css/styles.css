@@ -265,6 +265,8 @@ form {
 .note-section{
     max-width: calc(100% - 80px);
     flex: 1;
+    /* display: flex;
+    flex-direction: column; */
     
 }
 
@@ -280,7 +282,7 @@ form {
 }
 
 .note-section .inactive-form{
-    display: none;
+    /* display: none; */
 }
 
 .note-section .active-form{
@@ -288,6 +290,7 @@ form {
     flex-direction: column;
     flex: 1;
     height: 134px;
+    /* display: none; */
 }
 
 .title-div{
@@ -457,10 +460,26 @@ form {
     padding: 20px;
 }
 
+
+/* Styles for an example note */
+
+
+
+.create-note{
+    background-color: blue;
+    /* max-height: 128px; */
+    height: 102px;
+    width: 238px;
+    border: 1px solid black;
+   
+    outline: 1px solid blue;
+}
+
 /* Tootip */
 
 .tooltipmain{
     position: relative;
+    /* outline: 1px solid red; */
 }
 
 .tooltip{
@@ -479,14 +498,166 @@ form {
 
 }
 
-
-
-.tooltipmain2:hover + .tooltip{
-    visibility: visible;
-   
+.tooltip-inactive-form{
+    position: absolute;
+    left: 0;
+    top:100%;
+    font-size: 0.7rem;
+    background-color: #323232;
+    color: #fff;
+    opacity: 0.8;
+    padding: 5px;
+    white-space: nowrap;
+    border-radius: 5px;
+    z-index: 100;
+    visibility: hidden;
 
 }
 
+.inactive-form .tooltipmain:hover .tooltip-inactive-form{
+    visibility: visible;
+}
+
+.tooltip-inactive-form-with-drawing{
+    position: absolute;
+    left: -40px;
+    top:100%;
+    font-size: 0.7rem;
+    background-color: #323232;
+    color: #fff;
+    opacity: 0.8;
+    padding: 5px;
+    white-space: nowrap;
+    border-radius: 5px;
+    z-index: 100;
+    visibility: hidden;
+
+}
+
+.inactive-form .tooltipmain:hover .tooltip-inactive-form-with-drawing{
+    visibility: visible;
+}
+
+.tooltip-active-form{
+    position: absolute;
+    left: -1;
+    top:100%;
+    font-size: 0.7rem;
+    background-color: #323232;
+    color: #fff;
+    opacity: 0.8;
+    padding: 5px;
+    white-space: nowrap;
+    border-radius: 5px;
+    z-index: 100;
+    visibility: hidden;
+
+}
+
+.tooltip-pin-note{
+    position: absolute;
+    left: 545px;
+    top:100%;
+    font-size: 0.7rem;
+    background-color: #323232;
+    color: #fff;
+    opacity: 0.8;
+    padding: 5px;
+    white-space: nowrap;
+    border-radius: 5px;
+    z-index: 100;
+    visibility: hidden;
+
+}
+
+.tooltip-google{
+    position: absolute;
+    left: -15px;
+    top:100%;
+    font-size: 0.7rem;
+    background-color: #323232;
+    color: #fff;
+    opacity: 0.8;
+    padding: 5px;
+    white-space: nowrap;
+    border-radius: 5px;
+    z-index: 100;
+    visibility: hidden;
+
+}
+
+/* .tooltipmain2:hover{
+    cursor: pointer;
+    background-color: rgba(95, 99, 104, 0.1);
+    border-radius: 50%;
+} */
+
+.middle-section .icons:hover .tooltip{
+    visibility: visible;
+}
+
+.tooltipmain2:hover + .tooltip{
+    visibility: visible;
+}
+
+.title-div .tooltipmain2:hover{
+    cursor: pointer;
+    background-color: rgba(95, 99, 104, 0.1);
+    border-radius: 50%;
+}
+.tooltipmain2:hover + .tooltip-pin-note{
+    visibility: visible;
+
+}
+
+.tooltipmain2:hover + .tooltip-active-form{
+    visibility: visible;
+}
+
+.right-side .apps:hover .tooltip-google{
+    visibility: visible;
+}
+
+.inactive-form .tooltipmain:hover .tooltip{
+    visibility: visible;
+}
+
+
+/* ALL NOTES */
+
+.notes-canvas{
+    display: flex;
+    padding-left: 70px;
+}
+
+.note-container{
+    max-width: 238px;
+    display: flex;
+    flex-direction: column;
+    min-height: 102px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: white;
+    flex: 1;
+
+}
+
+.note-footer{
+    display: flex;
+    max-width: 238px;
+    height: 34px;
+}
+
+.note-footer .tooltipmain2{
+    
+    padding: 0;
+}
+
+
+.note-container span{
+    padding: 12px 16px 0px 16px;
+    /* outline: 1px solid red; */
+}
 
 /*Navi bar media queries*/
 @media screen and (max-width: 795px){
@@ -525,10 +696,14 @@ form {
         max-width: calc(100% - 80px);
     }
 
-    .take-a-note{
+    .take-a-note, .note-container{
         margin-left: 20px;
         margin-right: 20px;
         margin-top: 20px;
+    }
+
+    .note-container{
+        max-width: none;
     }
 
     nav{
