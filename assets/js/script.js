@@ -10,6 +10,8 @@ class App {
     constructor(){
         this.notes = []
 
+        this.selectedNoteId = ""
+
         this.$activeForm = document.querySelector(".take-a-note.active-form");
         this.$inactiveForm = document.querySelector(".take-a-note.inactive-form")
         this.$noteTitle = document.querySelector("#note-title");
@@ -20,6 +22,7 @@ class App {
         this.$modalForm = document.querySelector('#modal-form');
         this.$modalTitle = document.querySelector("#modal-title");
         this.$modalText = document.querySelector("#modal-text");
+        this.$lightBulb = document.querySelector('.notes-that-you-added-appear-hear')
 
         this.addEventListeners();
     }
@@ -27,8 +30,10 @@ class App {
     addEventListeners(){
         document.body.addEventListener("click", (event) =>{
             this.handleFormClick(event);
-            this.openModal(event);
             this.closeModal(event);
+            this.openModal(event);
+            
+            
         })
 
         this.$form.addEventListener('submit', (event) =>{
@@ -37,6 +42,7 @@ class App {
             const text = this.$noteText.value;
             this.addNote({title, text})
             this.closeActiveForm();
+            this.removeLightBulb();
 
         })
     }
@@ -78,18 +84,31 @@ class App {
 
     openModal(event){
         const $selectedNote = event.target.closest(".note-container");
+        
         if($selectedNote){
-             this.$modalText.value = $selectedNote.children[2].innerHTML;
-             this.$modalTitle.value = $selectedNote.children[1].innerHTML;
+            this.selectedNoteId = $selectedNote.id;
+            this.$modalText.value = $selectedNote.children[2].innerHTML;
+            this.$modalTitle.value = $selectedNote.children[1].innerHTML;
             this.$modal.classList.add('open-modal')
+            
+        }else{
+            return;
         }
     }
 
     closeModal(event){
         const isModalFormClickedOn = this.$modalForm.contains(event.target);
-        if(!isModalFormClickedOn && this.$modal.classList.contains('.open-modal')){
+        if(!isModalFormClickedOn && this.$modal.classList.contains('open-modal')){
+            this.editNote(this.selectedNoteId, {title: this.$modalTitle.value, text: this.$modalText.value})
             this.$modal.classList.remove('open-modal')
         }
+    }
+
+    removeLightBulb(){
+        if(this.$noteText.length != 0 || this.$noteTitle.lenght != 0){
+            this.$lightBulb.style.display = 'none';
+        }
+        
     }
 
     addNote({ title, text}){
@@ -107,7 +126,10 @@ class App {
                 note.title = title;
                 note.text = text;
             }
+            return note;
         })
+
+        this.displayNotes();
     }
 
     deleteNote(id){
