@@ -8,7 +8,7 @@ class Note{
 
 class App {
     constructor(){
-        this.notes = []
+        this.notes = JSON.parse(localStorage.getItem('notes')) || [];
 
         this.selectedNoteId = ""
 
@@ -31,6 +31,9 @@ class App {
         this.$sidebar = document.querySelector('.side-bar');
         this.$sidebarText = document.querySelectorAll('.text-appear');
         this.$notesection = document.querySelector('.note-section')
+
+        //render notes ater loading them
+        this.render();
 
         this.addEventListeners();
     }
@@ -142,6 +145,8 @@ class App {
         }
     }
 
+   
+
     handleToggleSidebar(){
         const sidebarTexts = this.$sidebar.querySelectorAll('.text-appear')
         const sidebarIcons = this.$sidebar.querySelectorAll('.menu')
@@ -186,7 +191,7 @@ class App {
         if(text != ""){
             const newNote = new Note(cuid(),title, text);
             this.notes.unshift(newNote);
-            this.displayNotes();
+            this.render();
         }
     
     }
@@ -200,12 +205,12 @@ class App {
             return note;
         })
 
-        this.displayNotes();
+        this.render();
     }
 
     deleteNote(id){
         this.notes = this.notes.filter((note) => note.id != id);
-        this.displayNotes()
+        this.render();
     }
 
     handleMouseOverNote(element){
@@ -227,6 +232,15 @@ class App {
         const $noteFooter = $note.querySelector(".note-footer")
         $checkNote.style.visibility = 'hidden'
         $noteFooter.style.visibility = 'hidden'
+    }
+
+    saveNotes(){
+        localStorage.setItem('notes', JSON.stringify(this.notes));
+    }
+
+    render(){
+        this.saveNotes();
+        this.displayNotes();
     }
 
     displayNotes(){

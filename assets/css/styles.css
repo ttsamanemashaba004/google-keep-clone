@@ -10,6 +10,10 @@
     font-family: 'Roboto', sans-serif;
 }
 
+body{
+    overflow-x: hidden;
+}
+
 /*Nav styling*/
 
 nav {
@@ -18,11 +22,11 @@ nav {
     height: 64px;
     padding: 8px;
     border-bottom: 1px solid #dadce0;
-    /* position: fixed; */
+    position: fixed;
     background-color: white;
-    /* z-index: 10000; */
+    z-index: 10000;
     flex: 1;
-    /* width: 100%; */
+    width: 100%;
     
 }
 
@@ -193,26 +197,53 @@ form {
 
 .side-bar{
     display: flex;
-    max-width: 80px;
-    /* max-width: 280px; */
-    flex: 1;
+    width: 80px;
+    height: 100%;
     flex-direction: column;
     padding-top: 10px;
-    /* position: fixed;
-    top: 64px; */
+    position: fixed;
+    top: 64px;
+    /* outline: 1px solid red; */
+    transform: 0.8s;
+    z-index: 1000;
     
 }
 
+.side-bar .material-symbols-outlined{
+    margin-left: 12px;
+}
+
+.sidebar-hover{
+    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+    background: white;
+}
+
+.active-lightbulb{
+    background-color: #feefc3;
+    border-radius: 0 50px 50px 0;
+}
+
+
+.text-appear{
+    display: none;
+}
 
 .icon .text{
-    display: none;
+    margin-left: 25px;
+    color: #202124;
+}
+
+.icon-not-active:hover{
+    cursor: pointer;
+    background-color: rgba(95, 99, 104, 0.1);
+    border-radius: 0 50px 50px 0; 
 }
 
 .notes, .reminder, .edit, .archive, .delete{
     font-size: .875rem;
     font-weight: 500;
     line-height: 1.25rem;
-    margin-left: 12px;
+    /* margin-left: 12px; */
 
 }
 
@@ -266,8 +297,12 @@ form {
 /*Styles for the note section*/
 
 .note-section{
-    max-width: calc(100% - 80px);
+    left: 80px;
     flex: 1;
+    top: 64px;
+    position: relative;
+    width: calc(100% - 80px);
+    
     /* display: flex;
     flex-direction: column; */
     
@@ -788,7 +823,8 @@ form {
     }
 
     .side-bar{
-        max-width: 80px;
+        min-width: 80px;
+        z-index: 0;
     }
 
     .note-section{
