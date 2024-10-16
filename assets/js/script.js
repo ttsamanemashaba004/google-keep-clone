@@ -22,7 +22,8 @@ class App {
         this.$modalForm = document.querySelector('#modal-form');
         this.$modalTitle = document.querySelector("#modal-title");
         this.$modalText = document.querySelector("#modal-text");
-        this.$lightBulb = document.querySelector('.notes-that-you-added-appear-hear')
+        this.$lightBulb = document.querySelector('.notes-that-you-added-appear-hear');
+        this.$closeModalForm = document.getElementById('modal-btn');
 
         this.addEventListeners();
     }
@@ -32,6 +33,7 @@ class App {
             this.handleFormClick(event);
             this.closeModal(event);
             this.openModal(event);
+            this.handleArchiving(event);
             
             
         })
@@ -44,6 +46,10 @@ class App {
             this.closeActiveForm();
             this.removeLightBulb();
 
+        })
+
+        this.$modalForm.addEventListener('submit', (event) =>{
+            event.preventDefault();
         })
     }
 
@@ -85,7 +91,7 @@ class App {
     openModal(event){
         const $selectedNote = event.target.closest(".note-container");
         
-        if($selectedNote){
+        if($selectedNote && !event.target.closest('.archive')){
             this.selectedNoteId = $selectedNote.id;
             this.$modalText.value = $selectedNote.children[2].innerHTML;
             this.$modalTitle.value = $selectedNote.children[1].innerHTML;
@@ -98,9 +104,21 @@ class App {
 
     closeModal(event){
         const isModalFormClickedOn = this.$modalForm.contains(event.target);
-        if(!isModalFormClickedOn && this.$modal.classList.contains('open-modal')){
+        const closeBtnClicked = this.$closeModalForm.contains(event.target);
+        if(!isModalFormClickedOn && this.$modal.classList.contains('open-modal') || closeBtnClicked){
             this.editNote(this.selectedNoteId, {title: this.$modalTitle.value, text: this.$modalText.value})
             this.$modal.classList.remove('open-modal')
+        }
+    }
+
+    handleArchiving(event){
+        const $selectedNote = event.target.closest(".note-container");
+        if($selectedNote && event.target.closest(".archive") ){
+            this.selectedNoteId = $selectedNote.id;
+            this.deleteNote(this.selectedNoteId);
+            
+        }else{
+            return;
         }
     }
 
@@ -114,7 +132,7 @@ class App {
     addNote({ title, text}){
         if(text != ""){
             const newNote = new Note(cuid(),title, text);
-            this.notes = [...this.notes, newNote];
+            this.notes.unshift(newNote);
             this.displayNotes();
         }
     
@@ -134,6 +152,7 @@ class App {
 
     deleteNote(id){
         this.notes = this.notes.filter((note) => note.id != id);
+        this.displayNotes()
     }
 
     handleMouseOverNote(element){
@@ -181,7 +200,7 @@ class App {
                             <span class="material-symbols-outlined image tooltipmain2">image</span>
                             <span class="tooltip-active-form">Add image</span>
                         </div>
-                        <div class="act tooltipmain">
+                        <div class="act tooltipmain archive">
                             <span class="material-symbols-outlined image tooltipmain2">archive</span>
                             <span class="tooltip-active-form">Archive</span>
                         </div>
