@@ -31,10 +31,11 @@ class App {
         this.$sidebar = document.querySelector('.side-bar');
         this.$sidebarText = document.querySelectorAll('.text-appear');
         this.$notesection = document.querySelector('.note-section')
+        this.$nav = document.querySelector('#navigator');
+        
 
         //render notes ater loading them
         this.render();
-
         this.addEventListeners();
     }
 
@@ -44,6 +45,8 @@ class App {
             this.closeModal(event);
             this.openModal(event);
             this.handleArchiving(event);
+            this.removeLightBulb();
+            this.addLightBulb();
             
             
             
@@ -55,7 +58,7 @@ class App {
             const text = this.$noteText.value;
             this.addNote({title, text})
             this.closeActiveForm();
-            this.removeLightBulb();
+            
 
         })
 
@@ -90,7 +93,7 @@ class App {
         }
         else if (!isActiveFormClickedOn){
             this.addNote({title, text})
-            this.removeLightBulb()
+            
             this.closeActiveForm();
             
         }
@@ -114,6 +117,7 @@ class App {
         const $selectedNote = event.target.closest(".note-container");
         
         if($selectedNote && !event.target.closest('.archive')){
+            this.$nav.style.zIndex = '0';
             this.selectedNoteId = $selectedNote.id;
             this.$modalText.value = $selectedNote.children[2].innerHTML;
             this.$modalTitle.value = $selectedNote.children[1].innerHTML;
@@ -128,6 +132,7 @@ class App {
         const isModalFormClickedOn = this.$modalForm.contains(event.target);
         const closeBtnClicked = this.$closeModalForm.contains(event.target);
         if(!isModalFormClickedOn && this.$modal.classList.contains('open-modal') || closeBtnClicked){
+            this.$nav.style.zIndex = '1000';
             this.editNote(this.selectedNoteId, {title: this.$modalTitle.value, text: this.$modalText.value})
             this.removeLightBulb();
             this.$modal.classList.remove('open-modal')
@@ -177,14 +182,17 @@ class App {
     }
 
     removeLightBulb(){
-        if(this.$noteText.value != '' || this.$noteTitle.value != ''){
-            this.$lightBulb.style.display = 'none';    
+        if (this.notes.length > 0) {
+            this.$lightBulb.style.display = 'none'; // Hide the light bulb
         }
         
     }
 
     addLightBulb(){
-
+        if (this.notes.length == 0) {
+            this.$lightBulb.style.display = 'flex';
+        } 
+        
     }
 
     addNote({ title, text}){
@@ -237,6 +245,8 @@ class App {
     saveNotes(){
         localStorage.setItem('notes', JSON.stringify(this.notes));
     }
+
+    
 
     render(){
         this.saveNotes();
