@@ -12,6 +12,10 @@ class App {
 
         this.selectedNoteId = ""
 
+        this.minisidebar = true;
+        this.noNote = true;
+
+        
         this.$activeForm = document.querySelector(".take-a-note.active-form");
         this.$inactiveForm = document.querySelector(".take-a-note.inactive-form")
         this.$noteTitle = document.querySelector("#note-title");
@@ -24,6 +28,9 @@ class App {
         this.$modalText = document.querySelector("#modal-text");
         this.$lightBulb = document.querySelector('.notes-that-you-added-appear-hear');
         this.$closeModalForm = document.getElementById('modal-btn');
+        this.$sidebar = document.querySelector('.side-bar');
+        this.$sidebarText = document.querySelectorAll('.text-appear');
+        this.$notesection = document.querySelector('.note-section')
 
         this.addEventListeners();
     }
@@ -34,6 +41,7 @@ class App {
             this.closeModal(event);
             this.openModal(event);
             this.handleArchiving(event);
+            
             
             
         })
@@ -50,6 +58,15 @@ class App {
 
         this.$modalForm.addEventListener('submit', (event) =>{
             event.preventDefault();
+        })
+
+        this.$sidebar.addEventListener('mouseover', () =>{
+            console.log('hello')
+            this.handleToggleSidebar();
+        })
+
+        this.$sidebar.addEventListener('mouseout', () =>{
+            this.handleToggleSidebar();
         })
     }
 
@@ -70,7 +87,9 @@ class App {
         }
         else if (!isActiveFormClickedOn){
             this.addNote({title, text})
+            this.removeLightBulb()
             this.closeActiveForm();
+            
         }
     }
 
@@ -107,6 +126,7 @@ class App {
         const closeBtnClicked = this.$closeModalForm.contains(event.target);
         if(!isModalFormClickedOn && this.$modal.classList.contains('open-modal') || closeBtnClicked){
             this.editNote(this.selectedNoteId, {title: this.$modalTitle.value, text: this.$modalText.value})
+            this.removeLightBulb();
             this.$modal.classList.remove('open-modal')
         }
     }
@@ -122,11 +142,44 @@ class App {
         }
     }
 
+    handleToggleSidebar(){
+        const sidebarTexts = this.$sidebar.querySelectorAll('.text-appear')
+        const sidebarIcons = this.$sidebar.querySelectorAll('.menu')
+        if(this.minisidebar){
+            this.$sidebar.style.width = '250px';
+            sidebarTexts.forEach(textElement =>{
+                textElement.style.display = 'block'
+            })
+            sidebarIcons.forEach(textElement =>{
+                textElement.classList.remove('menu')
+            })
+            this.$sidebar.children[0].classList.add('active-lightbulb')
+            this.$sidebar.classList.add('sidebar-hover')
+            this.minisidebar = false;
+        }
+        else{
+            this.$sidebar.style.width = '80px'
+            sidebarTexts.forEach(textElement =>{
+                textElement.style.display = 'none'
+            })
+            sidebarIcons.forEach(textElement =>{
+                textElement.classList.add('menu')
+            })
+            this.$sidebar.children[0].classList.remove('active-lightbulb');
+            this.$sidebar.classList.remove('sidebar-hover')
+            this.minisidebar = true;
+        }
+    }
+
     removeLightBulb(){
-        if(this.$noteText.length != 0 || this.$noteTitle.lenght != 0){
-            this.$lightBulb.style.display = 'none';
+        if(this.$noteText.value != '' || this.$noteTitle.value != ''){
+            this.$lightBulb.style.display = 'none';    
         }
         
+    }
+
+    addLightBulb(){
+
     }
 
     addNote({ title, text}){
